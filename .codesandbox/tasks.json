@@ -1,0 +1,19 @@
+{
+  "setupTasks": [],
+
+  "tasks": {
+    "go run": {
+      "name": "Run Main",
+      "command": "go run ./cmd/go-ip/main.go",
+      "runAtStart": true,
+      "restartOn": {
+        "files": ["./cmd/go-ip/main.go"]
+      }
+    },
+    "go build": {
+      "name": "run a Go Build",
+      "command": "go build -o ./bin/go-ip ./cmd/go-ip/main.go",
+      "runAtStart": false
+    }
+  }
+}
