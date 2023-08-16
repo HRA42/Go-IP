@@ -12,6 +12,8 @@ This app is written to make it super easy to get all relevant network data from 
 
 - Download `Go_IP.exe`
 - Run the exe from a command prompt
+- Run the exe with `-cidr` to enter a network address and get the subnet + related data
+- Run the exe with `-help` to get a list of all flags
 
 ---
 
