@@ -28,6 +28,7 @@ func (n Network) GetNetworkAddress() net.IP {
 }
 
 func (n Network) GetLastIP() net.IP {
+	// TODO: Fix for CIDR 31 and 32 / SubnetMask 255.255.255.254 and 255.255.255.255
 	broadcastAddress := n.GetBroadcastAddress().To4()
 	lastUsableAddress := make(net.IP, len(broadcastAddress))
 	copy(lastUsableAddress, broadcastAddress)
@@ -36,6 +37,7 @@ func (n Network) GetLastIP() net.IP {
 }
 
 func (n Network) GetFirstIP() net.IP {
+	// TODO: Fix for CIDR 31 and 32 / SubnetMask 255.255.255.254 and 255.255.255.255
 	networkAddress := n.GetNetworkAddress().To4()
 	firstUsableAddress := make(net.IP, len(networkAddress))
 	copy(firstUsableAddress, networkAddress)
