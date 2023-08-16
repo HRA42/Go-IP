@@ -29,17 +29,57 @@ func (n Network) GetNetworkAddress() net.IP {
 
 func (n Network) GetLastIP() net.IP {
 	broadcastAddress := n.GetBroadcastAddress().To4()
+	if broadcastAddress == nil {
+		return nil
+	}
 	lastUsableAddress := make(net.IP, len(broadcastAddress))
 	copy(lastUsableAddress, broadcastAddress)
-	lastUsableAddress[3]--
+
+	// If it is /31 CIDR
+	// In CIDR, for /31, broadcast and network address are valid hosts
+	cidr, _ := n.SubnetMask.Size()
+	if cidr == 31 {
+		return lastUsableAddress
+	}
+
+	// If it is /32 CIDR
+	// In CIDR, for /32, the host itself is its own network and broadcast address
+	if cidr == 32 {
+		return n.IpAddress
+	}
+
+	// For CIDR < /31
+	if len(lastUsableAddress) > 0 {
+		lastUsableAddress[len(lastUsableAddress)-1]--
+	}
 	return lastUsableAddress
 }
 
 func (n Network) GetFirstIP() net.IP {
-	networkAddress := n.GetNetworkAddress().To4()
+	networkAddress := n.GetNetworkAddress().To4() // n.GetNetworkAddress() is assumed to be defined elsewhere
+	if networkAddress == nil {
+		return nil
+	}
 	firstUsableAddress := make(net.IP, len(networkAddress))
 	copy(firstUsableAddress, networkAddress)
-	firstUsableAddress[3]++
+
+	cidr, _ := n.SubnetMask.Size()
+	// If it is /31 CIDR notation
+	if cidr == 31 {
+		firstUsableAddress[len(firstUsableAddress)-1]++
+		return firstUsableAddress
+	}
+
+	// If it is /32 CIDR notation
+	if cidr == 32 {
+		return n.IpAddress
+	}
+
+	// For CIDR < /31
+	if len(firstUsableAddress) > 0 {
+		firstUsableAddress[len(firstUsableAddress)-1]++
+	}
+
 	return firstUsableAddress
 }
 
