@@ -43,13 +43,32 @@ func (n Network) GetFirstIP() net.IP {
 	return firstUsableAddress
 }
 
+func (n Network) GetCIDRFromSubnetMask() string {
+	cidr, _ := n.SubnetMask.Size()
+	return fmt.Sprintf("%v/%v", n.GetNetworkAddress(), cidr)
+}
+
+func InputNetworkAddress() net.IPNet {
+	var NetworkAddress string
+	fmt.Print("Bitte gib die Netzwerk Adresse ein: ")
+	_, err := fmt.Scanln(&NetworkAddress)
+	if err != nil {
+		log.Fatal("Fehler bei der Eingabe:", err)
+	}
+	_, netAddress, err := net.ParseCIDR(NetworkAddress)
+	if netAddress == nil {
+		log.Fatal("IP Address nicht valide!")
+	}
+	fmt.Println("Du hast folgende Netzwerk Adresse eingegeben:", netAddress)
+	return *netAddress
+}
+
 func InputIP() net.IP {
 	var ipAddress string
 	fmt.Print("Bitte gib die IP Adresse ein: ")
 	_, err := fmt.Scanln(&ipAddress)
 	if err != nil {
 		log.Fatal("Fehler bei der Eingabe:", err)
-
 	}
 	ip := net.ParseIP(ipAddress)
 	if ip == nil {
