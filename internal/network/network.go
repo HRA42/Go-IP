@@ -14,12 +14,10 @@ type Network struct {
 func (n Network) GetBroadcastAddress() net.IP {
 	ip := n.IpAddress.To4()
 	mask := n.SubnetMask
-
 	broadcast := make(net.IP, len(ip))
 	for i := range ip {
 		broadcast[i] = ip[i] | ^mask[i]
 	}
-
 	return broadcast
 }
 
@@ -34,20 +32,17 @@ func (n Network) GetLastIP() net.IP {
 	}
 	lastUsableAddress := make(net.IP, len(broadcastAddress))
 	copy(lastUsableAddress, broadcastAddress)
-
 	// If it is /31 CIDR
 	// In CIDR, for /31, broadcast and network address are valid hosts
 	cidr, _ := n.SubnetMask.Size()
 	if cidr == 31 {
 		return lastUsableAddress
 	}
-
 	// If it is /32 CIDR
 	// In CIDR, for /32, the host itself is its own network and broadcast address
 	if cidr == 32 {
 		return n.IpAddress
 	}
-
 	// For CIDR < /31
 	if len(lastUsableAddress) > 0 {
 		lastUsableAddress[len(lastUsableAddress)-1]--
@@ -62,24 +57,20 @@ func (n Network) GetFirstIP() net.IP {
 	}
 	firstUsableAddress := make(net.IP, len(networkAddress))
 	copy(firstUsableAddress, networkAddress)
-
 	cidr, _ := n.SubnetMask.Size()
 	// If it is /31 CIDR notation
 	if cidr == 31 {
 		firstUsableAddress[len(firstUsableAddress)-1]++
 		return firstUsableAddress
 	}
-
 	// If it is /32 CIDR notation
 	if cidr == 32 {
 		return n.IpAddress
 	}
-
 	// For CIDR < /31
 	if len(firstUsableAddress) > 0 {
 		firstUsableAddress[len(firstUsableAddress)-1]++
 	}
-
 	return firstUsableAddress
 }
 
@@ -138,7 +129,6 @@ func InputSubnetMask() net.IPMask {
 
 func IsValidSubnetMask(subnetMask net.IPMask) bool {
 	mask := uint32(subnetMask[0])<<24 + uint32(subnetMask[1])<<16 + uint32(subnetMask[2])<<8 + uint32(subnetMask[3])
-
 	// count leading one bit
 	leadingOnes := 0
 	for i := 31; i >= 0; i-- {
@@ -148,7 +138,6 @@ func IsValidSubnetMask(subnetMask net.IPMask) bool {
 			break
 		}
 	}
-
 	// the mask should be all ones, followed by all zeros
 	expectedMask := ^uint32(0) << uint32(32-leadingOnes)
 	return mask == expectedMask
