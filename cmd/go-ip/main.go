@@ -15,7 +15,7 @@ func main() {
 	DecimalConversionFlag := flag.Bool(
 		"decimal",
 		false,
-		"Wandle eine Zahl vom Dezial System in das Binär und Hexadezimal System um",
+		"Wandle eine Zahl vom Dezimal System in das Binär und Hexadezimal System um",
 	)
 	BinaryConversionFlag := flag.Bool(
 		"binary",
