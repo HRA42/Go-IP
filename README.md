@@ -1,19 +1,27 @@
 # Go IP
 
-> [!NOTE] 
-> This is still in development. Please add a feature request if you want a feature added.
-> Feel free to fork this!
+> [!NOTE]
+> Diese App befindet sich noch in der Entwicklung.
+> Bitte fügen Sie eine Feature-Anfrage hinzu, wenn Sie möchten,
+dass ein Feature hinzugefügt wird.  
+> Du kannst dies gerne forken!
 
-This app is written to make it super easy to get all relevant network data from a single ip and the subnet mask.
-
+Diese App ist so programmiert,
+dass sie alle relevanten Netzwerkdaten von einer einzigen IP und der Subnetzmaske super einfach abrufen kann.
 ---
 
 ## Usage
 
 - Download `Go_IP.exe`
-- Run the exe from a command prompt
-- Run the exe with `-cidr` to enter a network address and get the subnet + related data
-- Run the exe with `-help` to get a list of all flags
+- Rufe `Go_IP.exe` aus Kommandozeile auf!
+- Rufe `Go_IP.exe` mit `-cidr` auf, um eine IP-Adresse CIDR-Notation einzugeben und alle relevanten Daten zu erhalten
+- Rufe `Go_IP.exe` mit `-binary`auf um eine Zahl im binären System einzugeben und sie in Dezimal und Hexadezimal
+umzuwandeln
+- Rufe `Go_IP.exe` mit `-decimal` auf um eine Zahl im dezimalen System einzugeben und sie in Binär und Hexadezimal
+umzuwandeln
+- Rufe `Go_IP.exe` mit `-hexadecimal` auf um eine Zahl im Hexadezimal System einzugeben und sie in Binär und Dezimal 
+umzuwandeln
+- Rufe `Go_IP.exe` mit `-help` auf um eine Übersicht über alle Befehle zu erhalten
 
 ---
 
