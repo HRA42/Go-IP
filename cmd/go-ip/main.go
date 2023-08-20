@@ -4,6 +4,7 @@ import (
 	"flag"
 	"github.com/hra42/Go-IP/internal/network"
 	"github.com/hra42/Go-IP/internal/numberConversion"
+	"github.com/hra42/Go-IP/internal/quiz"
 )
 
 func main() {
@@ -27,6 +28,11 @@ func main() {
 		false,
 		"Wandle eine Zahl vom Hexadezimal System in das Dezimal und Binär System um",
 	)
+	QuizFlag := flag.Bool(
+		"quiz",
+		false,
+		"Startet ein Quiz",
+	)
 	flag.Parse()
 
 	switch true {
@@ -43,6 +49,8 @@ func main() {
 		numberConversion.PrintBinary(numberConversion.InputNoneDecimal())
 	case *HexadecimalConversionFlag:
 		numberConversion.PrintHexadecimal(numberConversion.InputNoneDecimal())
+	case *QuizFlag:
+		quiz.Start()
 	default:
 		newNetwork := network.Network{
 			IpAddress:  network.InputIP(),
