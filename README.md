@@ -21,6 +21,7 @@ umzuwandeln
 umzuwandeln
 - Rufe `Go_IP.exe` mit `-hexadecimal` auf um eine Zahl im Hexadezimal System einzugeben und sie in Binär und Dezimal 
 umzuwandeln
+- Rufe `Go_IP.exe` mit `-quiz` auf um das Quiz zu starten
 - Rufe `Go_IP.exe` mit `-help` auf um eine Übersicht über alle Befehle zu erhalten
 
 ---
