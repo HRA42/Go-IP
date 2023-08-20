@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"github.com/hra42/Go-IP/internal/network"
+	"github.com/hra42/Go-IP/internal/numberConversion"
 )
 
 func main() {
@@ -10,6 +11,21 @@ func main() {
 		"cidr",
 		false,
 		"Gibt die Subnetz Maske zu einer Netzwerk Adresse in CIDR Notation aus.",
+	)
+	DecimalConversionFlag := flag.Bool(
+		"decimal",
+		false,
+		"Wandle eine Zahl vom Dezial System in das Binär und Hexadezimal System um",
+	)
+	BinaryConversionFlag := flag.Bool(
+		"binary",
+		false,
+		"Wandle eine Zahl vom Binär System in das Dezimal und Hexadezimal System um",
+	)
+	HexadecimalConversionFlag := flag.Bool(
+		"hexadecimal",
+		false,
+		"Wandle eine Zahl vom Hexadezimal System in das Dezimal und Binär System um",
 	)
 	flag.Parse()
 
@@ -21,6 +37,12 @@ func main() {
 			SubnetMask: networkAddress.Mask,
 		}
 		newNetwork.PrintCIDR()
+	case *DecimalConversionFlag:
+		numberConversion.PrintNumber(numberConversion.InputNumber())
+	case *BinaryConversionFlag:
+		numberConversion.PrintBinary(numberConversion.InputNoneDecimal())
+	case *HexadecimalConversionFlag:
+		numberConversion.PrintHexadecimal(numberConversion.InputNoneDecimal())
 	default:
 		newNetwork := network.Network{
 			IpAddress:  network.InputIP(),
