@@ -9,7 +9,7 @@ import (
 
 func InputNumber() int {
 	var number int
-	fmt.Print("Enter a number: ")
+	fmt.Print("Gib eine Zahl im Dezimal System ein: ")
 	_, err := fmt.Scan(&number)
 	if err != nil {
 		log.Println(err)
@@ -19,7 +19,7 @@ func InputNumber() int {
 
 func InputNoneDecimal() string {
 	var hexadecimal string
-	fmt.Print("Enter a hexadecimal number: ")
+	fmt.Print("Gib eine Zahl im Binär oder Hexadezimal System ein: ")
 	_, err := fmt.Scan(&hexadecimal)
 	if err != nil {
 		log.Println(err)
@@ -73,19 +73,19 @@ func HexadecimalToBinary(hexadecimal string) string {
 }
 
 func PrintNumber(number int) {
-	fmt.Println("Decimal:", number)
-	fmt.Println("Binary:", DecimalToBinary(number))
-	fmt.Println("Hexadecimal:", DecimalToHexadecimal(number))
+	fmt.Println("Dezimal:", number)
+	fmt.Println("Binär:", DecimalToBinary(number))
+	fmt.Println("Hexadezimal:", DecimalToHexadecimal(number))
 }
 
 func PrintBinary(number string) {
-	fmt.Println("Decimal:", BinaryToDecimal(number))
-	fmt.Println("Binary:", number)
-	fmt.Println("Hexadecimal:", BinaryToHexadecimal(number))
+	fmt.Println("Dezimal:", BinaryToDecimal(number))
+	fmt.Println("Binär:", number)
+	fmt.Println("Hexadezimal:", BinaryToHexadecimal(number))
 }
 
 func PrintHexadecimal(number string) {
-	fmt.Println("Decimal:", HexadecimalToDecimal(number))
-	fmt.Println("Binary:", HexadecimalToBinary(number))
-	fmt.Println("Hexadecimal:", number)
+	fmt.Println("Dezimal:", HexadecimalToDecimal(number))
+	fmt.Println("Binär:", HexadecimalToBinary(number))
+	fmt.Println("Hexadezimal:", number)
 }
