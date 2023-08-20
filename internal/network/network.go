@@ -142,3 +142,42 @@ func IsValidSubnetMask(subnetMask net.IPMask) bool {
 	expectedMask := ^uint32(0) << uint32(32-leadingOnes)
 	return mask == expectedMask
 }
+
+func (n Network) PrintCIDR() {
+	log.Printf("Die Subnetzmaske ist: %d.%d.%d.%d\n",
+		n.SubnetMask[0],
+		n.SubnetMask[1],
+		n.SubnetMask[2],
+		n.SubnetMask[3],
+	)
+	log.Printf("Die Netzwerk Adresse ist: %v\n",
+		n.GetNetworkAddress(),
+	)
+	log.Printf("Die erste nutzbare Adresse des Netzwerks ist: %v\n",
+		n.GetFirstIP(),
+	)
+	log.Printf("Die letzte nutzbare Adresse des Netzwerks ist: %v\n",
+		n.GetLastIP(),
+	)
+	log.Printf("Die Broadcast Adresse des Netzwerks ist: %v\n",
+		n.GetBroadcastAddress(),
+	)
+}
+
+func (n Network) Print() {
+	log.Printf("Die CIDR Notation des Netzwerks ist: %v",
+		n.GetCIDRFromSubnetMask(),
+	)
+	log.Printf("Die Netzwerk Adresse ist: %v\n",
+		n.GetNetworkAddress(),
+	)
+	log.Printf("Die erste nutzbare Adresse des Netzwerks ist: %v\n",
+		n.GetFirstIP(),
+	)
+	log.Printf("Die letzte nutzbare Adresse des Netzwerks ist: %v\n",
+		n.GetLastIP(),
+	)
+	log.Printf("Die Broadcast Adresse des Netzwerks ist: %v\n",
+		n.GetBroadcastAddress(),
+	)
+}
