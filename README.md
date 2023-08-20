@@ -10,9 +10,9 @@ Diese App ist so programmiert,
 dass sie alle relevanten Netzwerkdaten von einer einzigen IP und der Subnetzmaske super einfach abrufen kann.
 ---
 
-## Usage
+## Verwendung
 
-- Download `Go_IP.exe`
+- Download `Go_IP.exe` aus der Release Page
 - Rufe `Go_IP.exe` aus Kommandozeile auf!
 - Rufe `Go_IP.exe` mit `-cidr` auf, um eine IP-Adresse CIDR-Notation einzugeben und alle relevanten Daten zu erhalten
 - Rufe `Go_IP.exe` mit `-binary`auf um eine Zahl im binären System einzugeben und sie in Dezimal und Hexadezimal
