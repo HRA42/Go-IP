@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	desktop_app "github.com/hra42/Go-IP/internal/desktop-app"
+	"github.com/hra42/Go-IP/internal/desktopApp"
 	"github.com/hra42/Go-IP/internal/network"
 	"github.com/hra42/Go-IP/internal/numberConversion"
 	"github.com/hra42/Go-IP/internal/quiz"
@@ -64,7 +64,7 @@ func main() {
 	case *QuizFlag:
 		quiz.Start()
 	default:
-		desktop_app.TestDesktop()
+		desktopApp.RunDesktop()
 	}
 
 }

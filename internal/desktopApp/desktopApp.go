@@ -1,4 +1,4 @@
-package desktop_app
+package desktopApp
 
 import (
 	"fyne.io/fyne/v2"
@@ -12,7 +12,7 @@ import (
 	"strconv"
 )
 
-func TestDesktop() {
+func RunDesktop() {
 	// set up the app
 	a := app.New()
 	w := a.NewWindow("Go-IP")
@@ -25,7 +25,7 @@ func TestDesktop() {
 	w.SetIcon(resourceIconPng)
 
 	// set the window size
-	w.Resize(fyne.NewSize(250, 300))
+	w.Resize(fyne.NewSize(285, 300))
 
 	// main menu
 	mainMenu := fyne.NewMainMenu(
