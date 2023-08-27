@@ -2,12 +2,18 @@ package main
 
 import (
 	"flag"
+	"github.com/hra42/Go-IP/internal/desktopApp"
 	"github.com/hra42/Go-IP/internal/network"
 	"github.com/hra42/Go-IP/internal/numberConversion"
 	"github.com/hra42/Go-IP/internal/quiz"
 )
 
 func main() {
+	IPFlag := flag.Bool(
+		"ip",
+		false,
+		"Gibt die Netzwerk Adresse, Broadcast Adresse, erste und letzte IP Adresse aus.",
+	)
 	cidrFlag := flag.Bool(
 		"cidr",
 		false,
@@ -36,6 +42,12 @@ func main() {
 	flag.Parse()
 
 	switch true {
+	case *IPFlag:
+		newNetwork := network.Network{
+			IpAddress:  network.InputIP(),
+			SubnetMask: network.InputSubnetMask(),
+		}
+		newNetwork.Print()
 	case *cidrFlag:
 		networkAddress := network.InputNetworkAddress()
 		newNetwork := network.Network{
@@ -52,11 +64,7 @@ func main() {
 	case *QuizFlag:
 		quiz.Start()
 	default:
-		newNetwork := network.Network{
-			IpAddress:  network.InputIP(),
-			SubnetMask: network.InputSubnetMask(),
-		}
-		newNetwork.Print()
+		desktopApp.RunDesktop()
 	}
 
 }
