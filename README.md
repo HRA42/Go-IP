@@ -24,6 +24,9 @@ umzuwandeln
 - Rufe `Go_IP.exe` mit `-quiz` auf um das Quiz zu starten
 - Rufe `Go_IP.exe` mit `-help` auf um eine Übersicht über alle Befehle zu erhalten
 
+### Desktop App
+Du kannst auch die Desktopanwendung verwenden. Diese enthält alle Funktionen der CLI App, aber mit einer GUI.
+
 ---
 
 ## Codesandbox
